@@ -13,7 +13,7 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   
   <!-- Babel (Reactのコードをブラウザ用に変換するツール) を読み込み -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
 
   <style>
     /* アニメーション用のスタイル */
@@ -30,24 +30,11 @@
   <div id="root"></div>
 
   <!-- ここから下がアプリのプログラム（React）です -->
-  <script type="text/babel" data-type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+  <script type="text/babel" data-presets="env,react" data-type="text/javascript">
+    const { useState } = React;
 
-    const { useState, useEffect } = React;
-
-    // --- Firebase 初期化（Canvas環境用のおまじない） ---
-    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-    let app, auth, db;
-    try {
-      app = initializeApp(firebaseConfig);
-      auth = getAuth(app);
-      db = getFirestore(app);
-    } catch (e) {
-      console.error("Firebase init error", e);
-    }
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    // Renderでの通常公開用に、Canvas/Firebase専用のimportと認証処理は削除しています。
+    // このアプリの送信処理はMake WebhookへPOSTする構成なので、Firebaseは不要です。
 
     // ==========================================
     // アイコンコンポーネント
@@ -153,7 +140,6 @@
       const [selectedCase, setSelectedCase] = useState(null);
 
       // --- 直接送信用のステートとデータベース認証 ---
-      const [user, setUser] = useState(null);
       const [name, setName] = useState("");
       const [contact, setContact] = useState("");
       const [message, setMessage] = useState("");
@@ -170,25 +156,6 @@
       });
       const [wantedFeatures, setWantedFeatures] = useState([]);
       const [step5Error, setStep5Error] = useState("");
-
-      // アプリ起動時にデータベースへの接続認証を行う
-      useEffect(() => {
-        if (!auth) return;
-        const initAuth = async () => {
-          try {
-            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-              await signInWithCustomToken(auth, __initial_auth_token);
-            } else {
-              await signInAnonymously(auth);
-            }
-          } catch (e) {
-            console.error("Auth error", e);
-          }
-        };
-        initAuth();
-        const unsubscribe = onAuthStateChanged(auth, setUser);
-        return () => unsubscribe();
-      }, []);
 
       // ★ 送信ボタンが押されたときの処理（Slack連携用にWebhookに変更）
       const handleSendDirect = async () => {
@@ -1021,8 +988,27 @@
     }
 
     // アプリを画面に表示
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
+    // Render.com 上で白画面になった場合に原因を確認しやすくするため、
+    // React の描画処理を try/catch で囲んでいます。
+    const rootElement = document.getElementById('root');
+
+    try {
+      if (!rootElement) {
+        throw new Error('描画先の #root が見つかりません。');
+      }
+
+      const root = ReactDOM.createRoot(rootElement);
+      root.render(<App />);
+    } catch (error) {
+      console.error('アプリの描画に失敗しました:', error);
+      rootElement.innerHTML = `
+        <div style="padding: 24px; font-family: sans-serif; color: #b91c1c;">
+          <h1 style="font-size: 20px; font-weight: bold;">アプリの読み込みに失敗しました</h1>
+          <p>Console に表示されているエラーを確認してください。</p>
+          <pre style="white-space: pre-wrap; background: #fee2e2; padding: 12px; border-radius: 8px;">${error.message}</pre>
+        </div>
+      `;
+    }
   </script>
 </body>
 </html>
