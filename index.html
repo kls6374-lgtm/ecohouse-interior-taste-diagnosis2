@@ -373,7 +373,7 @@
       const sendDiagnosticsBackground = async () => {
         try {
           const webhookUrl = "https://hook.eu1.make.com/t4owxtu16pz830mbyshk1mdpoqhwoy6m"; 
-          const formattedLifestyle = `収納:${lifestyleAnswers.q1} / 洗濯:${lifestyleAnswers.q2} / 買い物:${lifestyleAnswers.q3} / キッチン:${lifestyleAnswers.q4} / 洗面脱衣:${lifestyleAnswers.q5}`;
+          const formattedLifestyle = `【収納：${lifestyleAnswers.q1} / 洗濯：${lifestyleAnswers.q2} / 買い物：${lifestyleAnswers.q3} / キッチン：${lifestyleAnswers.q4} / 洗面脱衣：${lifestyleAnswers.q5}】`;
           
           const payload = {
             tasteName: selectedTaste?.name || "",
@@ -448,7 +448,7 @@
         try {
           const webhookUrl = "https://hook.eu1.make.com/t4owxtu16pz830mbyshk1mdpoqhwoy6m"; 
 
-          const formattedLifestyle = ` （ 収納：${lifestyleAnswers.q1} / 洗濯：${lifestyleAnswers.q2} / 買い物：${lifestyleAnswers.q3} / キッチン：${lifestyleAnswers.q4} / 洗面脱衣：${lifestyleAnswers.q5} ） `;
+          const formattedLifestyle = `【収納：${lifestyleAnswers.q1} / 洗濯：${lifestyleAnswers.q2} / 買い物：${lifestyleAnswers.q3} / キッチン：${lifestyleAnswers.q4} / 洗面脱衣：${lifestyleAnswers.q5}】`;
           const methodLabel = { mail: "郵送する", visit: "来店する" }[receiveMethod];
 
           // ★追加: Slack通知用に、受取方法に応じた連絡先情報テキストを自動で組み立てる
