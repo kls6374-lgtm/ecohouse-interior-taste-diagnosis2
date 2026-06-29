@@ -212,7 +212,7 @@
       },
       'antique-4': {
         title: "エレガントな伝統を愛する\n「ヨーロピアン・アンティーク」タイプ",
-        description: "あなたはヨーロッパの伝統的な美意識や、品格のある優雅なスタイルに強く惹かれます。日常の中にも、まるで映画 of ワンシーンのようなドラマチックでエレガントな要素を求めているタイプです。",
+        description: "あなたはヨーロッパの伝統的な美意識や、品格のある優雅なスタイルに強く惹かれます。日常の中にも、まるで映画 of ワンシーンのようなドラマチックでエレガアントな要素を求めているタイプです。",
         advice: "シャンデリアや猫脚の家具、ベルベット調のソファなど、クラシカルで高級感のあるアイテムを取り入れましょう. 壁にはモールディング（装飾縁）を施すと、より本格的な洋館の雰囲に近づきます。"
       },
       'antique-5': {
@@ -228,7 +228,7 @@
       'industrial-1': {
         title: "ハードな素材感を愛する\n「ヴィンテージ・インダストリアル」タイプ",
         description: "あなたはガレージや古い工場のような、荒々しく男前なテイストをこよなく愛しています。綺麗に整えられた空間よりも、素材の質感がダイレクトに伝わるような、無骨で力強い空間に惹かれるタイプです。",
-        advice: "壁や天井はコンクリートむき出しにし、照明には黒いダクトレールやインダストリアルランプを。アイアン家具やレザーソファ、ヴィンテージ雑貨を配置して、思い切りハードに切り切るのが正解です。"
+        advice: "壁や天井はコンクリートむき出しにし、照明には黒いダクトレールやインダストリアルランプを。アイアン家具やレザーソファ, ヴィンテージ雑貨を配置して、思い切りハードに切り切るのが正解です。"
       },
       'industrial-2': {
         title: "無機質×生命力の対比を楽しむ\n「ボタニカル・インダストリアル」タイプ",
@@ -261,7 +261,7 @@
         advice: "ステンレスのキッチンに、モザイクタイルや使い込まれた木製のアンティーク食器棚を合わせてみましょう. 新旧 of アイテムをミックスすることで、カフェのような居心地の良いノスタルジック空間になります。"
       },
       'japanese-2': {
-        title: "古き良き骨組みを活かす\n「古民家・和モダン」タイプ",
+        title: "古き良き骨組みを活かつ\n「古民家・和モダン」タイプ",
         description: "あなたは長い年月を耐え抜いた太い梁や大黒柱など、古民家が持つ力強い生命力に魅力を感じます。古い建物の良さをそのまま活かつつ、自分らしい新しい息吹を吹き込むようなダイナミックな空間を好みます。",
         advice: "リノベーションであれば既存の立派な梁見せる天井に。新築でも、あえて古材風の太い梁を渡すことで古民家風の開放感が出せます。インダストリアルな照明など、少しハードなアイテムがよく似合います。"
       },
@@ -287,7 +287,7 @@
       },
       'hotel-1': {
         title: "ラグジュアリーな日常を愛する\n「アーバン・ホテルライク」タイプ",
-        description: "あなたは都心の高級ホテルのラウンジのような、シックで都会的な空間に惹かれます. 生活感を感じさせないスマートな暮らしと、本物志向のラグジュアリーな素材感を愛するタイプです。",
+        description: "あなたは都心の高級ホテルのラウンジのような、シックで都会的な空間に惹かれます. 生活感を感じさせないスマートな暮らしと、本物志向 of ラグジュアリーな素材感を愛するタイプです。",
         advice: "全体をグレーやモノトーンの落ち着いた色調でまとめ、大理石調の壁面パネルや床材で高級感を演出しましょう。上質なファブリックの大型ソファを中心に置くと、ホテルのようなスケール感が出ます。"
       },
       'hotel-2': {
@@ -1076,35 +1076,36 @@
                   Q2. オリジナルプランの受取方法をお選びください
                 </label>
                 
-                <div className="grid grid-cols-3 gap-2">
+                {/* 3並びボタン：スマートフォン向けにパディングを小さくし、テキストの改行・文字溢れを防ぐ */}
+                <div className="grid grid-cols-3 gap-1.5 min-[375px]:gap-2">
                   {/* ★ LINE公式アカウント(LIFF URL)へ直接遷移するリンクボタン */}
                   <a
                     href={LINE_ACCOUNT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={sendDiagnosticsBackground}
-                    className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 hover:border-[#06C755] hover:bg-[#06C755]/5 text-gray-600 hover:text-[#06C755] transition-all text-center"
+                    className="flex flex-col items-center justify-center gap-2 p-2 md:p-3 rounded-xl border-2 border-gray-200 hover:border-[#06C755] hover:bg-[#06C755]/5 text-gray-600 hover:text-[#06C755] transition-all text-center"
                   >
                     <span className="text-2xl">💬</span>
-                    <span className="text-[11px] md:text-[12px] leading-tight font-bold">チャットで相談する</span>
+                    <span className="text-[10px] min-[360px]:text-[11px] md:text-[12px] leading-tight font-bold whitespace-nowrap tracking-tighter">チャットで相談する</span>
                   </a>
 
                   <button
                     type="button"
                     onClick={() => { setReceiveMethod('mail'); setErrorMsg(""); }}
-                    className={`flex flex-col items-center gap-2 p-3 rounded-xl border-2 transition-all ${receiveMethod === 'mail' ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold shadow-sm' : 'border-gray-200 hover:border-emerald-200 text-gray-600 bg-[#fbfbfb]'}`}
+                    className={`flex flex-col items-center gap-2 p-2 md:p-3 rounded-xl border-2 transition-all ${receiveMethod === 'mail' ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold shadow-sm' : 'border-gray-200 hover:border-emerald-200 text-gray-600 bg-[#fbfbfb]'}`}
                   >
                     <span className="text-2xl">✉️</span>
-                    <span className="text-[12px] md:text-[13px] font-bold">郵送する</span>
+                    <span className="text-[10px] min-[360px]:text-[11px] md:text-[13px] font-bold whitespace-nowrap tracking-tighter">郵送する</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => { setReceiveMethod('visit'); setErrorMsg(""); }}
-                    className={`flex flex-col items-center gap-2 p-3 rounded-xl border-2 transition-all ${receiveMethod === 'visit' ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold shadow-sm' : 'border-gray-200 hover:border-emerald-200 text-gray-600 bg-[#fbfbfb]'}`}
+                    className={`flex flex-col items-center gap-2 p-2 md:p-3 rounded-xl border-2 transition-all ${receiveMethod === 'visit' ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold shadow-sm' : 'border-gray-200 hover:border-emerald-200 text-gray-600 bg-[#fbfbfb]'}`}
                   >
                     <span className="text-2xl">🏠</span>
-                    <span className="text-[12px] md:text-[13px] font-bold">来店する</span>
+                    <span className="text-[10px] min-[360px]:text-[11px] md:text-[13px] font-bold whitespace-nowrap tracking-tighter">来店する</span>
                   </button>
                 </div>
               </div>
