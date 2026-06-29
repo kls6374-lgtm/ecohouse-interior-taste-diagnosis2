@@ -39,6 +39,11 @@
     const { useState } = React;
 
     // ==========================================
+    // LINE公式アカウントの設定
+    // ==========================================
+    const LINE_ACCOUNT_URL = "https://liff.line.me/1657509484-RgAyXZbq/landing?follow=%40015tjmpi&lp=WyhirG&liff_id=1657509484-RgAyXZbq"; 
+
+    // ==========================================
     // アイコンコンポーネント (SVG)
     // ==========================================
     const ChevronLeft = ({ size = 24, className = "" }) => (
@@ -59,6 +64,7 @@
 
     // ==========================================
     // 万能画像フォールバックコンポーネント
+    // (画像が存在しない場合、自動的に各テイストに合わせたグラデーションを生成します)
     // ==========================================
     const SafeImage = ({ src, alt, className, style, ...props }) => {
       const [hasError, setHasError] = useState(false);
@@ -107,47 +113,47 @@
         { id: 'natural-1', image: './images/N1.jpg', title: '自然素材が心地よいダイニング', description: '斜め張りの木材が目を引くキッチンカウンターが主役のダイニング。ルーバー扉やラタンの照明など、自然素材をふんだんに取り入れた爽やかなスタイルです。' },
         { id: 'natural-2', image: './images/N2.jpg', title: 'カフェのような居心地の良い空間', description: 'モスグリーンのタイルで仕上げたキッチンカウンターと、木板張りの下がり天井がアクセント。木目の家具とたっぷりのグリーンが調和する、カフェのような居心地の良い空間です。' },
         { id: 'natural-3', image: './images/N3.jpg', title: 'ラフで自由な土間キッチン', description: '柱や梁、白い板張りの壁など、古い建物の趣を残しつつリノベーション。土間に置かれた大きなステンレスキッチンや木のテーブルが、ラフで自由な暮らしを想像させます。' },
-        { id: 'natural-4', image: './images/N4.jpg', title: '庭の緑を楽しむナチュラルな住まい', description: '白い正方形タイルで造作されたアイランドキッチンと、木の梁見せ天井のコントラストが美しいLDK。大きな窓から庭の緑を楽しめる、明るくナチュラルな住まいです。' },
-        { id: 'natural-5', image: './images/N5.jpg', title: '光が通り抜けるサニタリー', description: 'ガラスの建具で仕切られた、光が通り抜ける開放的なサニタリースペース。コンクリート土間に自転車や観葉植物を無造作に置き、インドアグリーンのある暮らしを満喫できます。' }
+        { id: 'natural-4', image: './images/N4.jpg', title: '庭の緑を楽しむナチュラルな住まい', description: '白い正方形タイルで造作されたアイランドキッチンと、木の梁見せ天井 of コントラストが美しいLDK。大きな窓から庭の緑を楽しめる、明るくナチュラルな住まいです。' },
+        { id: 'natural-5', image: './images/N5.jpg', title: '光が通り抜けるサニタリー', description: 'ガラス的建具で仕切られた、光が通り抜ける開放的なサニタリースペース。コンクリート土間に自転車や観葉植物を無造作に置き、インドアグリーンのある暮らしを満喫できます。' }
       ],
       antique: [
-        { id: 'antique-0', image: './images/A0.jpg', title: '落ち着いた色合いのアンティーク空間', description: 'クラシックな柄の壁紙とレンガ調の柱が目を引くリビング。ダークグリーンのキッチンカウンターや天井の木目など、落ち着いた色合いでまとめたアンティーク空間です。' },
-        { id: 'antique-1', image: './images/A1.jpg', title: '特別なディスプレイスペース', description: '重厚な木製キャビネットやアンティークのフロアランプが存在感を放つ、ショップのような一角。お気に入りの小物を並べて楽しむ、特別なディスプレイスペースです。' },
-        { id: 'antique-2', image: './images/A2.jpg', title: 'レトロなタイルが彩るダイニング', description: 'むき出しのコンクリート梁と、使い込まれた大きな木製の食器棚が実用的にマッチ。レトロなタイル張りのキッチンとグリーンが彩りを添える、居心地の良いダイニングです。' },
+        { id: 'antique-0', image: './images/A0.jpg', title: '落ち着いた色合いのアンティーク空間', description: 'クラシックな柄の壁紙とレンガ調 of 柱が目を引くリビング。ダークグリーンのキッチンカウンターや天井の木目など、落ち着いた色合いでまとめたアンティーク空間です。' },
+        { id: 'antique-1', image: './images/A1.jpg', title: '特別なディスプレイススペース', description: '重厚な木製キャビネットやアンティークのフロアランプが存在感を放つ、ショップのような一角。お気に入りの小物を並べて楽しむ、特別なディスプレイススペースです。' },
+        { id: 'antique-2', image: './images/A2.jpg', title: 'レトロなタイルが彩るダイニング', description: 'むき出し of コンクリート梁と、使い込まれた大きな木製の食器棚が絶妙にマッチ。レトロなタイル張りのキッチンとグリーンが彩りを添える、居心地の良いダイニングです。' },
         { id: 'antique-3', image: './images/A3.jpg', title: 'アトリエのようなワークスペース', description: '年月を経た味わい深い木のデスクや小引き出しを並べた、アトリエのようなワークスペース。静かな時間が流れ、読書や趣味に没頭できる大人のための隠れ家です。' },
-        { id: 'antique-4', image: './images/A4.jpg', title: 'ヨーロッパの伝統を感じるリビング', description: '重厚な木製キャビネットや猫脚のテーブル、シャンデリアがヨーロッパの伝統を感じさせるリビング。ベルベット調のソファや絨毯が、エレガントな雰囲力をさらに高めます。' },
-        { id: 'antique-5', image: './images/A5.jpg', title: '優雅で明るい洋館風リビング', description: '吹き抜けの開放感とアーチ状の開口部が美しい、洋館を思わせるリビング。パーケットフローリングに大きな柱時計やクラシカルなソファが手になじむ、優雅で明るい空間です。' }
+        { id: 'antique-4', image: './images/A4.jpg', title: 'ヨーロッパの伝統を感じるリビング', description: '重厚な木製キャビネットや猫脚のテーブル、シャンデリアがヨーロッパの伝統を感じさせるリビング。ベルベット調のソファや絨毯が、エレガ雰囲気を入さらに高めます。' },
+        { id: 'antique-5', image: './images/A5.jpg', title: '優雅で明るい洋館風リビング', description: '吹き抜けの開放感とアーチ状 of 開口部が美しい、洋館を思わせるリビング。パーケットフローリングに大きな柱時計やクラシカルなソファが馴染む、優雅で明るい空間です。' }
       ],
       industrial: [
-        { id: 'industrial-0', image: './images/I0.jpg', title: '洗練された無骨なLDK', description: 'むき出し of 黒い鉄骨とヘリンボーンの床が印象的な広々としたLDK。ダークウッドのキッチンカウンターやブルーのソファが、無骨さの中に洗練された雰囲力をプラスしています。' },
+        { id: 'industrial-0', image: './images/I0.jpg', title: '洗練された無骨なLDK', description: 'むき出し of 黒い鉄骨とヘリンボーンの床が印象的な広々としたLDK。ダークウッド of kitchenカウンターやブルーのソファが、無骨さの中に洗練された雰囲力をプラスしています。' },
         { id: 'industrial-1', image: './images/I1.jpg', title: '男前なインダストリアルリビング', description: 'ラフなコンクリートむき出しの壁と天井が目を引くリビング。黒いダクトレール照明やインダストリアルなフロアランプ、ヴィンテージ調の小物が男前な空間を演出しています。' },
-        { id: 'industrial-2', image: './images/I2.jpg', title: '無機質とグリーンの美しい対比', description: '古材を使ったキッチンカウンターと、無機質なコンクリート壁のコントラストが美しい空間. 天井から吊るしたたくさんのグリーンが、クールな部屋に温かみと彩りを添えています。' },
+        { id: 'industrial-2', image: './images/I2.jpg', title: '無機質とグリーンの美しい対比', description: '古材を使ったキッチンカウンターと、無機質なコンクリート壁のコントラストが美しい空間. たくさんのグリーンが、クールな部屋に温かみと彩りを添えています。' },
         { id: 'industrial-3', image: './images/I3.jpg', title: 'スタイリッシュなハードテイスト', description: 'ステンレス製の大きなアイランドキッチンが存在感を放つLDK。天井のむき出し配管やスツールなど、工場や倉庫のようなハードな要素をスタイリッシュにまとめています。' },
         { id: 'industrial-4', image: './images/I4.jpg', title: 'ブルックリンスタイルのリビング', description: 'モルタル調の壁と、真鍮のような輝きを放つ大型のペンダントライトが特徴的なリビング。重厚なレザーソファや黒枠の室内窓が、ブルックリンスタイルのようなかっこよさを引き立てます。' },
         { id: 'industrial-5', image: './images/I5.jpg', title: '自由でクリエイティブな小上がり空間', description: 'コンクリートの天井や壁をそのまま活かした、天井が高く開放的なリビング。一段上がった木造りの小上がりスペースや無骨なスチール家具が、自由でクリエイティブな暮らしを感じさせます。' }
       ],
       japanese: [
         { id: 'japanese-0', image: './images/J0.jpg', title: '和の趣とモダンが交差するダイニング', description: '木の温もりを感じる柱と板張りの天井が印象的なダイニング。障子風の窓やグレーのアクセントウォールが、和の趣とモダンな雰囲力を絶妙にミックスしています。' },
-        { id: 'japanese-1', image: './images/J1.jpg', title: 'ノスタルジックな和のキッチン', description: '細やかなモザイクタイルとステンレスの組み合わせがスタイリッシュなキッチン。使い込まれた木の扉やアンティークな食器棚が、ノスタルジックな和の空気を醸し出します。' },
+        { id: 'japanese-1', image: './images/J1.jpg', title: 'ノスタルジックな和のキッチン', description: '細やかなモザイクタイルとステンレスの組み合わせがスタイリッシュなキッチン. 使い込まれた木の扉やアンティークな食器棚が、ノスタルジックな和の空気を醸し出します。' },
         { id: 'japanese-2', image: './images/J2.jpg', title: '開放感あふれる古民家風LDK', description: '古民家の立派な梁や屋根裏をそのまま活かした、開放感あふれるLDK。モザイクタイルのカウンターやインダストリアルな照明が、和の空間に新しい息吹をもたらしています。' },
         { id: 'japanese-3', image: './images/J3.jpg', title: '和の静けさを感じるルーバー窓の空間', description: '美しい木目の勾配天井と、光を優しく取り込むルーバー窓が特徴的な空間。造作のキッチンカウンターや室内の一角に設けた緑が、和の静けさを感じさせます。' },
         { id: 'japanese-4', image: './images/J4.jpg', title: '縁側からの光が心地よいリビング', description: '伝統的な日本家屋の造りを残しつつ、モダンな囲炉裏テーブルを中央に配置。縁側から差し込む光が心地よい、広々とした畳と板間のリビングです。' },
         { id: 'japanese-5', image: './images/J5.jpg', title: '趣深い土間風の和空間', description: '土間の名残を感じる広いスペースに、モルタル仕上げのモダンなキッチンを新設。奥の和室や坪庭の緑を眺めながら食事を楽しめる、趣深い和空間です。' }
       ],
       hotel: [
-        { id: 'hotel-0', image: './images/H0.jpg', title: 'リゾートホテルのような安らぎの空間', description: '木目の天井や柱と、石目調のアクセントウォールが調和する上質なリビング。自然素材の温かみと洗練されたデザインが融合した、リゾートホテルのような安らぎの空間です。' },
-        { id: 'hotel-1', image: './images/H1.jpg', title: '高級ホテルのラウンジ風モダンリビング', description: 'グレーを基調としたシックで都会的なリビング。大理石調の壁面パネルやゆったりとした大型ソファを配置し、高級ホテルのラウンジを思わせるモダンな空間に仕上げました。' },
-        { id: 'hotel-2', image: './images/H2.jpg', title: '華やかで洗練されたLDK', description: '黒いフレームのガラスパーテーションが空間をスタイリッシュに仕切る LDK。印象的なデザインのペンダントライトや間接照明が、華やかで洗練された雰囲力を演出します。' },
-        { id: 'hotel-3', image: './images/H3.jpg', title: '大人の隠れ家ホテルのようなリビング', description: 'レンガ調の壁やコンクリートの質感が目を引く、重厚感のある空間。レザーのラウンジチェアを配し、ヴィンテージテイストを取り入れた大人の隠れ家ホテルのようなリビングです。' },
+        { id: 'hotel-0', image: './images/H0.jpg', title: 'リゾートホテルのような安らぎの空間', description: '木目の天井や柱と、石目調のアクセントウォールが調和する上質なリビング. 自然素材の温かみと洗練されたデザインが融合した、リゾートホテルのような安らぎ of 空間です。' },
+        { id: 'hotel-1', image: './images/H1.jpg', title: '高級ホテルのラウンジ風モダンリビング', description: 'グレーを基調としたシックで都会的なリビング。大理石調 of 壁面パネルやゆったりとした大型ソファを配置し、高級ホテルのラウンジを思わせるモダンな空間に仕上げました。' },
+        { id: 'hotel-2', image: './images/H2.jpg', title: '華やかで洗練されたLDK', description: '黒いフレームのガラスパーテーションが空間をスタイリッシュに仕切るLDK。印象的なデザインのペンダントライトや間接照明が、華やかで洗練された雰囲力を演出します。' },
+        { id: 'hotel-3', image: './images/H3.jpg', title: '大人の隠れ家ホテルのようなリビング', description: 'レンンガ調 of 壁やコンクリートの質感が目を引く、重厚感のある空間. レザーのラウンジチェアを配し、ヴィンテージテイストを取り入れた大人の隠れ家ホテルのようなリビングです。' },
         { id: 'hotel-4', image: './images/H4.jpg', title: 'くつろぎの時間を過ごすベッドルーム', description: '落ち着いたグレージュのアクセントクロスと間接照明が、心地よい眠りを誘うベッドルーム。アートや小ぶりのソファを設え、くつろぎの時間を過ごすプライベータルームに。' },
         { id: 'hotel-5', image: './images/H5.jpg', title: '白とグレーの開放的なリビング', description: '吹き抜けからたっぷりと光が降り注ぐ、白とグレーで統一された開放的なリビング。石目調のテレビボード壁面やバーチカルブラインドが、空間をよりシャープに魅せています。' }
       ],
       nordic: [
-        { id: 'nordic-0', image: './images/M0.jpg', title: 'ポップで楽しいミッドセンチュリー', description: '吹き抜けの開放的なリビングに、鮮やかなブルーのソファとイエローのチェアが映える空間。グリーンのアクセントウォールや木製の手すりが、ポップで楽しいミッドセンチュリーの世界観を演出しています。' },
+        { id: 'nordic-0', image: './images/M0.jpg', title: 'ポップで楽しいミッドセンチュリー', description: '吹き抜けの開放的なリビングに、鮮やかなブルーのソファとイエロー of チェアが映える空間。グリーンのアクセントウォールや木製の手すりが、ポップで楽しいミッドセンチュリーの世界観を演出しています。' },
         { id: 'nordic-1', image: './images/M1.jpg', title: '和と洋が調和したリビングダイニング', description: '美しい木目の板張り天井とパーケットフローリングが、空間全体に温かみを与えます。青緑色のソファや和紙のペンダントライトなど、和と洋が調和した落ち着きのあるリビングダイニングです。' },
         { id: 'nordic-2', image: './images/M2.jpg', title: 'ゆったり過ごせる大人の上質空間', description: '壁一面に設けられた造作の本棚と、暖炉が印象的な大人のリビング。コーデュロイの大きなソファや籐のラウンジチェアに身を委ね、ゆったりとした時間を過ごせる上質な空間です。' },
-        { id: 'nordic-3', image: './images/M3.jpg', title: '建築美を感じる芸術的な空間', description: 'ダイナミックな板張り天井と、温かみのあるレンガ壁が特徴的な建築美を感じる空間。大きな窓から見える緑と、個性的なデザインのチェアが、芸術的な雰囲力を醸し出しています。' },
-        { id: 'nordic-4', image: './images/M4.jpg', title: 'レトロモダンなレンガ壁のリビング', description: '外の景色を大胆に取り込む大きな窓と、重厚なレンガ壁のコントラストが美しいリビング。ヴィンテージ感のあるレザーソファや幾何学模様のラグが、レトロモダンな雰囲力を強調します。' },
+        { id: 'nordic-3', image: './images/M3.jpg', title: '建築美を感じる芸術的な空間', description: 'ダイナミックな勾配天井 or 温かみのあるレンガ壁が特徴的な建築美を感じる空間。大きな窓から見える緑と、個性的なデザイン of チェアが、芸術的な雰囲力を醸し出しています。' },
+        { id: 'nordic-4', image: './images/M4.jpg', title: 'レトロモダンなレンガ壁のリビング', description: '外の景色を大胆に取り込む大きな窓と、重厚なレンガ壁のコントラストが美しいリビング。ヴィンテージ感のあるレザーソファや幾学的な模様のラグが、レトロモダンな雰囲力を強調します。' },
         { id: 'nordic-5', image: './images/M5.jpg', title: 'レトロで温かいカフェ風ダイニング', description: '壁の腰壁や造作キャビネットなど、ふんだんに使われた木の質感が心地よいダイニング。特徴的なペンダントライトやたくさんの観葉植物が、レトロで温かいカフェのような空間を作っています。' }
       ]
     };
@@ -186,28 +192,28 @@
       },
       'antique-0': {
         title: "クラシカルな静寂を愛する\n「トラディショナル・アンティーク」タイプ",
-        description: "あなたは歴史や伝統が息づく、重厚で落ち着きのある空間に惹かれます。深い色合いやクラシックなパターンの美しさを理解し、静かな時間の中で読書や思索を楽しむことができる大人な感性の持ち主です。",
+        description: "あなたは歴史や伝統が息づく、重厚で落ち着きのある空間に惹かれます. 深い色合いやクラシックなパターンの美しさを理解し、静かな時間の中で読書や思索を楽しむことができる大人な感性の持ち主です。",
         advice: "ダークトーンの木材や、深みのあるグリーン、ボルドーなどの色を取り入れた空間づくりがおすすめ。柄物の壁紙をアクセントにしたり、真鍮パーツを随所に散りばめると雰囲気が出ます。"
       },
       'antique-1': {
         title: "お気に入りを愛でる\n「コレクター・アンティーク」タイプ",
         description: "あなたは一つ一つのモノの背景にある物語を大切にし、お気に入りのアイテムを美しく飾ることに喜びを感じます。まるでアンティークショップのような、こだわりが詰まった空間を好むタイプです。",
-        advice: "お気に入りの食器や小物を飾るための、存在感のある木製キャビネットや飾り棚を主役にしましょう。フロアランプなどの間接照明でコレクションを照らすと、特別感がさらに増します。"
+        advice: "お気に入りの食器や小物を飾るための、存在感のある木製キャビネットや飾り棚を主役にしましょう. フロアランプなどの間接照明でコレクションを照らすと、特別感がさらに増します。"
       },
       'antique-2': {
         title: "ノスタルジックな温もりを好む\n「レトロ・アンティーク」タイプ",
         description: "あなたはどこか懐かしく、人の温もりを感じる空間に安心感を覚えます。新しさや洗練さよりも、使い込まれた道具が放つ優しい空気感や、肩の力を抜いて過ごせる日常を愛するタイプです。",
-        advice: "レトロな柄のタイルを使ったキッチンや、あえてコンクリートの梁見せなど、少し無骨で温かみのある要素を取り入れましょう。古道具やドライフラワーがとてもよく似合う空間になります。"
+        advice: "レトロな柄のタイルを使ったキッチンや、あえてコンクリートの梁を見せるなど、少し無骨で温かみのある要素を取り入れましょう. 古道具やドライフラワーがとてもよく似合う空間になります。"
       },
       'antique-3': {
-        title: "静かな没入感を求める\n 「アトリエ・アンティーク」タイプ",
+        title: "静かな没入感を求める\n「アトリエ・アンティーク」タイプ",
         description: "あなたは自分だけの趣味や創作活動に没頭できる、秘密基地のような空間に憧れています。静かに時が流れるような、少し薄暗くて落ち着きのあるアトリエのような雰囲力を好むタイプです。",
         advice: "LDKの一部に、味わい深い木のデスクや小引き出しを置けるワークスペース（書斎）を設けるのがおすすめ。照明を少し落とし気味にして、作業に集中できるこもり感のある空間を作りましょう。"
       },
       'antique-4': {
         title: "エレガントな伝統を愛する\n「ヨーロピアン・アンティーク」タイプ",
-        description: "あなたはヨーロッパの伝統的な美意識や、品格のある優雅なスタイルに強く惹かれます。日常の中にも、まるで映画のワンシーンのようなドラマチックでエレガントな要素を求めているタイプです。",
-        advice: "シャンデリアや猫脚の家具、ベルベット調のソファなど、クラシカルで高級感のあるアイテムを取り入れましょう。壁にはモールディング（装飾縁）を施すと、より本格的な洋館の雰囲に近づきます。"
+        description: "あなたはヨーロッパの伝統的な美意識や、品格のある優雅なスタイルに強く惹かれます。日常の中にも、まるで映画 of ワンシーンのようなドラマチックでエレガントな要素を求めているタイプです。",
+        advice: "シャンデリアや猫脚の家具、ベルベット調のソファなど、クラシカルで高級感のあるアイテムを取り入れましょう. 壁にはモールディング（装飾縁）を施すと、より本格的な洋館の雰囲に近づきます。"
       },
       'antique-5': {
         title: "優雅な洋館の趣を好む\n「クラシック・アンティーク」タイプ",
@@ -222,42 +228,42 @@
       'industrial-1': {
         title: "ハードな素材感を愛する\n「ヴィンテージ・インダストリアル」タイプ",
         description: "あなたはガレージや古い工場のような、荒々しく男前なテイストをこよなく愛しています。綺麗に整えられた空間よりも、素材の質感がダイレクトに伝わるような、無骨で力強い空間に惹かれるタイプです。",
-        advice: "壁や天井はコンクリートむき出しにし、照明には黒いダクトレールやインダストリアルランプを。アイアン家具やレザーソファ、ヴィンテージ雑貨を配置して、思い切りハードに振り切るのが正解です。"
+        advice: "壁や天井はコンクリートむき出しにし、照明には黒いダクトレールやインダストリアルランプを。アイアン家具やレザーソファ、ヴィンテージ雑貨を配置して、思い切りハードに切り切るのが正解です。"
       },
       'industrial-2': {
         title: "無機質×生命力の対比を楽しむ\n「ボタニカル・インダストリアル」タイプ",
-        description: "あなたはコンクリートなどの冷たい素材と、植物の温かい生命力を組み合わせた空間に新鮮な力を感じます。クールなカッコよさの中に、ほっとできる癒しや有機的な要素を取り入れたいたいタイプです。",
-        advice: "無機質な壁を背景にして、天井からハンギングプランツを吊るしたり、大小の観葉植物をたくさん配置しましょう。古材を使ったキッチンや家具を合わせることで、冷たすぎない絶妙なバランスになります。"
+        description: "あなたはコンクリートなどの冷たい素材と、植物の温かい生命力を組み合わせた空間に新鮮な魅力を感じます。クールなカッコよさの中に、ほっとできる癒しや有機的な要素を取り入れたいたいタイプです。",
+        advice: "無機質な壁を背景にして、天井からハンギングプランツを吊るしたり、大小の観煙植物をたくさん配置しましょう。古材を使ったキッチンや家具を合わせることで、冷たすぎない絶妙なバランスになります。"
       },
       'industrial-3': {
         title: "機能美とハードさを追求する\n「ファクトリー・インダストリアル」タイプ",
-        description: "あなたはプロ用の厨房や、機能性を極めた工場のようなストイックな空間に惹かれます。無駄な装飾を削ぎ落とし、道具としての美しさや使い勝手の良さをとことん追求したい本格派です。",
+        description: "あなたはプロ用の厨房や、機能性を極めた工場のようなストいックな空間に惹かれます. 無駄な装飾を削ぎ落とし、道具としての美しさや使い勝手の良さをとことん追求したい本格派です。",
         advice: "オールステンレスの大きなアイランドキッチンを空間の主役に据えるのがおすすめ。天井の配管やダクトはあえて隠さず見せることで、より一層ファクトリー（工場）のような雰囲力を強調できます。"
       },
       'industrial-4': {
         title: "海外のアパルトマンに憧れる\n「ブルックリン・インダストリアル」タイプ",
-        description: "あなたはニューヨークのブルックリン地区にあるような、古いレンガ造りの建物をリノベーションしたスタイルに憧れています。重厚感とカジュアルさが混在する、かっこいい空間づくりが得意です。",
+        description: "場所に古いレンガ造りの建物をリノベーションしたスタイルに憧れています。重厚感とカジュアルさが混在する、かっこいい空間づくりが得意です。",
         advice: "モルタル調の壁や、黒枠のガラス室内窓を取り入れると一気にブルックリンスタイルに。真鍮やゴールド系の大型ペンダントライトや、使い込まれたような厚手のレザーソファが空間を引き締めます。"
       },
       'industrial-5': {
-        title: "自由な発想で空間を使う\n「クリエイティブ・インダストリアル」タイプ",
+        title: "自由な発発想で空間を使う\n「creative・インダストリアル」タイプ",
         description: "あなたは一般的なLDKの概念にとらわれず、空間を立体的・多目的に使いたいと考えるクリエイター気質です。遊び心があり、型にはまらない自由な暮らしのアイデアをたくさん持っています。",
         advice: "天井を高くしてコンクリートの質感を活かしつつ、部屋の一部に木製の「小上がり」を作るなど、段差で空間を仕切るアイデアがおすすめ。スチールと木を組み合わせた家具でラフにまとめましょう。"
       },
       'japanese-0': {
         title: "伝統と現代を美しく調和させる\n「洗練・和モダン」タイプ",
         description: "あなたは日本の伝統的な建築美に敬意を払いながらも、現代のライフスタイルに合った快適さを求めています。和の趣とモダンなデザインをバランスよくミックスさせる、センスの良い空間づくりが得意です。",
-        advice: "無垢の柱や板張りの天井など木の温もりをベースに、グレーのアクセントクロスやシャープなデザインの家具を合わせてみましょう。障子をモダンにアレンジした建具を取り入れるのも効果的です。"
+        advice: "無垢の柱や板張りの天井など木の温もりをベースに、グレーのアクセントクロスやシャープなデザイン of 家具を合わせてみましょう。障子をモダンにアレンジした建具を取り入れるのも効果端です。"
       },
       'japanese-1': {
         title: "懐かしさと新しさを楽しむ\n「ノスタルジック・和モダン」タイプ",
         description: "あなたは古い日本家屋や昭和のレトロな雰囲気に、どこか心惹かれるものを感じています。昔からある素材やデザインと、現代の新しい素材を組み合わせることで生まれる、独特の空気感を愛するタイプです。",
-        advice: "ステンレスのキッチンに、モザイクタイルや使い込まれた木製のアンティーク食器棚を合わせてみましょう。新旧のアイテムをミックスすることで、カフェのような居心地の良いノスタルジック空間になります。"
+        advice: "ステンレスのキッチンに、モザイクタイルや使い込まれた木製のアンティーク食器棚を合わせてみましょう. 新旧 of アイテムをミックスすることで、カフェのような居心地の良いノスタルジック空間になります。"
       },
       'japanese-2': {
         title: "古き良き骨組みを活かす\n「古民家・和モダン」タイプ",
-        description: "あなたは長い年月を耐え抜いた太い梁や大黒柱など、古民家が持つ力強い生命力に魅力を感じます。古い建物の良さをそのまま活かした、自分らしい新しい息吹を吹き込むようなダイナミックな空間を好みます。",
-        advice: "リノベーションであれば既存の立派な梁を見せる天井に。新築でも、あえて古材風の太い梁を渡すことで古民家風の開放感が出せます。インダストリアルな照明など、少しハードなアイテムがよく似合います。"
+        description: "あなたは長い年月を耐え抜いた太い梁や大黒柱など、古民家が持つ力強い生命力に魅力を感じます。古い建物の良さをそのまま活かつつ、自分らしい新しい息吹を吹き込むようなダイナミックな空間を好みます。",
+        advice: "リノベーションであれば既存の立派な梁見せる天井に。新築でも、あえて古材風の太い梁を渡すことで古民家風の開放感が出せます。インダストリアルな照明など、少しハードなアイテムがよく似合います。"
       },
       'japanese-3': {
         title: "光と影の静寂を愛する\n「陰影礼賛・和モダン」タイプ",
@@ -265,7 +271,7 @@
         advice: "木目の美しい勾配天井や、光を優しく調節できるルーバー（羽板）窓を取り入れるのがおすすめ。強い直射日光を避け、間接照明を効果的に使うことで、旅館のような静寂を感じる空間になります。"
       },
       'japanese-4': {
-        title: "縁側の心地よさに惹かれる\n「伝統回帰・和モダン」タイプ",
+        title: "縁側の心地よさに惹かれる\n「伝統回帰・和モダン`」タイプ",
         description: "あなたは畳の匂いや、縁側でのんびり過ごす時間など、日本の伝統的な暮らしのスタイルに強く惹かれています。家族が自然と顔を合わせ、四季の移ろいを肌で感じながら暮らしたいと願うタイプです。",
         advice: "フローリングのリビングに隣接して、小上がりの畳スペースや広縁（ひろえん）を設けるのが理想的。現代的な囲炉裏テーブルなどを置き、家族や友人が車座になってくつろげる空間を作りましょう。"
       },
@@ -277,11 +283,11 @@
       'hotel-0': {
         title: "上質なリゾート感を求める\n「リゾート・ホテルライク」タイプ",
         description: "あなたは南国の高級リゾートホテルのような、心からリラックスできる極上の空間に憧れています。自然素材の持つ温かみと、洗練されたデザインが融合した、非日常的な癒しを求めるタイプです。",
-        advice: "木目の美しい天井や柱と、重厚感のある石目調の壁を組み合わせるのがポイント。家具はロースタイルでゆったりとしたものを選び、間接照明で壁の質感を際立たせるとリゾート感がアップします。"
+        advice: "木目の美しい天井や柱と、重厚感のある石目調 of 壁を組み合わせるのがポイント。家具はロースタイルでゆったりとしたものを選び、間接照明で壁の質感を際際立たせるとリゾート感がアップします。"
       },
       'hotel-1': {
         title: "ラグジュアリーな日常を愛する\n「アーバン・ホテルライク」タイプ",
-        description: "あなたは都心の高級ホテルのラウンジのような、シックで都会的な空間に惹かれます。生活感を感じさせないスマートな暮らしと、本物志向のラグジュアリーな素材感を愛するタイプです。",
+        description: "あなたは都心の高級ホテルのラウンジのような、シックで都会的な空間に惹かれます. 生活感を感じさせないスマートな暮らしと、本物志向のラグジュアリーな素材感を愛するタイプです。",
         advice: "全体をグレーやモノトーンの落ち着いた色調でまとめ、大理石調の壁面パネルや床材で高級感を演出しましょう。上質なファブリックの大型ソファを中心に置くと、ホテルのようなスケール感が出ます。"
       },
       'hotel-2': {
@@ -292,16 +298,16 @@
       'hotel-3': {
         title: "重厚で落ち着きのある\n「隠れ家・ホテルライク」タイプ",
         description: "あなたは明るくオープンな空間よりも、少しトーンを落とした、重厚で隠れ家のような空間に安らぎを感じます。上質なレザーやレンガなど、深みのある素材に囲まれてお酒や音楽を楽ししたい大人なタイプです。",
-        advice: "レンガ調のアクセントクロスやコンクリートの質感を壁に取り入れ、全体をダークトーンでまとめましょう。ヴィンテージ感のあるレザーのラウンジチェアを配置すれば、極上のパーソナルスペースが完成します。"
+        advice: "レンガ調のアクセントクロスやコンクリートの質感を壁に取り入れ、全体をダークトーンでまとめましょう。ヴィンテージ感のあるレザーのラウンジチェアを置けば、極上のパーソナルスペースが完成します。"
       },
       'hotel-4': {
         title: "極上のプライベート空間を求める\n「リトリート・ホテルライク」タイプ",
         description: "あなたは家を「心と体を回復させる場所（リトリート）」として捉えており、特に寝室などのプライベートな空間の質を重視します。肌触りの良い寝具や優しい灯りに包まれた、至福の休息を求めるタイプです。",
-        advice: "寝室はグレージュなどの落ち着いた色合いのクロスを選び、柔らかな間接照明のみで光をデザインしましょう。ベッドの横にアートを飾ったり、小ぶりのソファを置いて読書スペースを作ると完璧です。"
+        advice: "寝室はグレージュなどの落ち着いた色合いのクロスを選び、柔らかな間接照明のみで光をデザインしましょう. ベッドの横にアートを飾ったり、小ぶりのソファを置いて読書スペースを作ると完璧です。"
       },
       'hotel-5': {
         title: "開放的でシャープな美を好む\n「ミニマル・ホテルライク」タイプ",
-        description: "あなたは無駄な装飾やノイズを極限まで削ぎ落とした、ミニマルで開放的な空間の美しさに惹かれます。白とグレーを基調とした、清潔感と緊張感が同居するシャープなデザインを好むタイプです。",
+        description: "あなたは無駄な装飾やノイズを極限まで削ぎ落とした、ミニマルで開放的な空間 of 美しさに惹かれます。白とグレーを基調とした、清潔感と緊張感が同居するシャープなデザインを好むタイプです。",
         advice: "吹き抜けからの自然光を最大限に活かすため、壁は白、床はグレーなど極力色を絞りましょう。石目調のテレビボードやバーチカル（縦型）ブラインドで縦のラインを強調すると、空間がより洗練されます。"
       },
       'nordic-0': {
@@ -310,7 +316,7 @@
         advice: "ベースとなる空間はシンプルにしつつ、鮮やかなブルーのソファやイエローのチェアなど、発色の良い名作家具を主役に。壁の一部をグリーンなどのアクセントクロスにするのも効果的です。"
       },
       'nordic-1': {
-        title: "多国籍なミックス感を楽しむ\n「ボーダーレス・ミッドセンチュリー」タイプ",
+        title: "多国籍なミックス感を楽しむ\n「ボーボーダーレス・ミッドセンチュリー」タイプ",
         description: "あなたは和や洋、古いものや新しいものなど、異なるテイストを自分らしくミックスさせるセンスに長けています。特定の様式にこだわらず、自分が「美しい」「心地よい」と感じるものを自由に集めるタイプです。",
         advice: "木の温もりを感じる板張りの天井や床をベースに、ミッドセンチュリーデザイン of ソファや、和紙を使ったモダンなペンダントライトを合わせてみましょう。国籍を問わない調和が生まれます。"
       },
@@ -321,7 +327,7 @@
       },
       'nordic-3': {
         title: "建築と家具の造形美を愛する\n「アーキテクト・ミッドセンチュリー」タイプ",
-        description: "あなたは空間の構造や、家具の美しいシルエットなど「造形美」に強く惹かれます。名作チェアなど、デザイナーの思想が詰まったインテリアをアートのように空間に配置して楽しみたいタイプです。",
+        description: "あなたは空間の構造や、家具の美しいシルエットなど「造形美」に強く惹かれます. 名作チェアなど、デザイナーの思想が詰まったインテリアをアートのように空間に配置して楽ししたいタイプです。",
         advice: "ダイナミックな勾配天井や、温かみのあるレンガ壁など、建築そのものに特徴を持たせるのがおすすめ。そこに曲線が美しい個性的なデザインのチェアを置くことで、互いの美しさが引き立ちます。"
       },
       'nordic-4': {
@@ -332,7 +338,7 @@
       'nordic-5': {
         title: "温もりあるカフェ空間に憧れる\n「カフェ・ミッドセンチュリー」タイプ",
         description: "あなたは木の質感をふんだんに使った、少しレトロで温もりあふれる空間にほっとします。洗練されすぎず、肩の力を抜いてくつろげる、おしゃれな街のカフェのようなダイニングキッチンを愛するタイプです。",
-        advice: "壁の下半分に板を張る「腰壁」や、木目の美しい造作キャビネットを取り入れましょう。少しレトロなデザインのペンダントライトを飾り、たくさんの観葉植物を飾れば理想のカフェ空間になります。"
+        advice: "壁の下半分に板を張る「腰壁」や、木目の美しい造作キャビネットを取り入れましょう。少しレトロなデザインのペンダントライトをスライド、たくさんの観葉植物を飾れば理想のカフェ空間になります。"
       }
     };
 
@@ -349,59 +355,52 @@
       const [wantedFeatures, setWantedFeatures] = useState([]);
       const [step5Error, setStep5Error] = useState("");
 
-      // --- 新規入力ステート（間取りタイプ・相談方法・連絡先情報） ---
-      const [housePlanType, setHousePlanType] = useState(""); 
-      const [receiveMethod, setReceiveMethod] = useState(""); 
+      // --- 入力ステート（間取りタイプ・相談方法・連絡先情報） ---
+      const [housePlanType, setHousePlanType] = useState(""); // 今住んでいる間取り / 中古で購入した物件の間取り
+      const [receiveMethod, setReceiveMethod] = useState(""); // line / mail / visit
       const [name, setName] = useState("");
-      const [contact, setContact] = useState(""); 
+      const [contact, setContact] = useState(""); // 郵送時（電話）、来店時（電話）
       const [postalCode, setPostalCode] = useState("");
       const [address, setAddress] = useState("");
-      const [visitStore, setVisitStore] = useState(""); 
-      const [visitDateTime, setVisitDateTime] = useState(""); 
-      const [message, setMessage] = useState(""); 
-
-      // --- 図面ファイルアップロード用新規ステート ---
-      const [floorPlanFile, setFloorPlanFile] = useState(null);
-      const [floorPlanPreview, setFloorPlanPreview] = useState("");
-      const [floorPlanBase64, setFloorPlanBase64] = useState("");
+      const [visitStore, setVisitStore] = useState(""); // 希望店舗
+      const [visitDateTime, setVisitDateTime] = useState(""); // 来店希望日時
+      const [message, setMessage] = useState(""); // その他ご要望
 
       const [isSubmitting, setIsSubmitting] = useState(false);
       const [errorMsg, setErrorMsg] = useState("");
 
-      // 図面ファイル選択ハンドラ
-      const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        setFloorPlanFile(file);
-
-        // 画像の場合はローカルプレビューを表示する
-        if (file.type.startsWith('image/')) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            setFloorPlanPreview(reader.result);
-            setFloorPlanBase64(reader.result); // Base64データを保存
+      // ★ LINE直接遷移の際、バックグラウンドで診断内容をMake Webhookへ連携する
+      const sendDiagnosticsBackground = async () => {
+        try {
+          const webhookUrl = "https://hook.eu1.make.com/t4owxtu16pz830mbyshk1mdpoqhwoy6m"; 
+          const formattedLifestyle = `収納:${lifestyleAnswers.q1} / 洗濯:${lifestyleAnswers.q2} / 買い物:${lifestyleAnswers.q3} / キッチン:${lifestyleAnswers.q4} / 洗面脱衣:${lifestyleAnswers.q5}`;
+          
+          const payload = {
+            tasteName: selectedTaste?.name || "",
+            caseId: selectedCase?.id || "",
+            caseTitle: selectedCase?.title || "",
+            diagnosticTitle: selectedCase ? diagnosticResults[selectedCase.id].title.replace('\n', ' ') : "",
+            lifestyle: formattedLifestyle,
+            wantedFeatures: wantedFeatures.join("、"),
+            housePlanType: housePlanType || "未選択（直接LINE遷移）",
+            receiveMethod: "チャットで相談する（直接遷移）",
+            name: "LINEユーザー（直接遷移）",
+            contact: "LINE直接遷移"
           };
-          reader.readAsDataURL(file);
-        } else {
-          // PDF等の画像以外はアイコン表示
-          setFloorPlanPreview("");
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            setFloorPlanBase64(reader.result);
-          };
-          reader.readAsDataURL(file);
+
+          if (webhookUrl && webhookUrl !== "ここにコピーしたURLを貼り付けます") {
+            fetch(webhookUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            }).catch(err => console.error("Background Webhook error:", err));
+          }
+        } catch (e) {
+          console.error("Background send error:", e);
         }
       };
 
-      // 図面ファイルクリア
-      const handleRemoveFile = () => {
-        setFloorPlanFile(null);
-        setFloorPlanPreview("");
-        setFloorPlanBase64("");
-      };
-
-      // ★ 送信ボタンが押されたときの処理 (Make Webhook 連携 & サンクスページへの遷移)
+      // ★ 送信ボタンが押されたときの処理 (Make Webhook 連携 - 郵送・来店)
       const handleSendDirect = async () => {
         setErrorMsg("");
         
@@ -420,10 +419,6 @@
         }
 
         // お届け方法に応じた個別バリデーション
-        if (receiveMethod === 'chat' && !contact.trim()) {
-          setErrorMsg("チャット送信用のご連絡先（メールまたは電話）をご記入ください。");
-          return;
-        }
         if (receiveMethod === 'mail') {
           if (!postalCode.trim() || !address.trim()) {
             setErrorMsg("ご郵送先のご住所（郵便番号・住所）をご記入ください。");
@@ -454,9 +449,9 @@
           const webhookUrl = "https://hook.eu1.make.com/t4owxtu16pz830mbyshk1mdpoqhwoy6m"; 
 
           const formattedLifestyle = `収納:${lifestyleAnswers.q1} / 洗濯:${lifestyleAnswers.q2} / 買い物:${lifestyleAnswers.q3} / キッチン:${lifestyleAnswers.q4} / 洗面脱衣:${lifestyleAnswers.q5}`;
-          const methodLabel = { chat: "チャットで送る", mail: "郵送する", visit: "来店する" }[receiveMethod];
+          const methodLabel = { mail: "郵送する", visit: "来店する" }[receiveMethod];
 
-          // Webhookへ送る充実したデータ構造
+          // Webhookへ送るデータ構造
           const payload = {
             tasteName: selectedTaste?.name || "",
             caseId: selectedCase?.id || "",
@@ -465,7 +460,7 @@
             lifestyle: formattedLifestyle,
             wantedFeatures: wantedFeatures.join("、"),
             
-            // フォームの入力データ
+            // フォームのデータ
             housePlanType: housePlanType, 
             receiveMethod: methodLabel,
             name: name,
@@ -474,14 +469,9 @@
             address: address,
             visitStore: visitStore,
             visitDateTime: visitDateTime,
-            message: message,
-
-            // アップロードされた図面データ
-            floorPlanName: floorPlanFile ? floorPlanFile.name : "",
-            floorPlanData: floorPlanBase64 // Base64エンコードデータ (fileまたは画像)
+            message: message
           };
 
-          // Make Webhookへのデータ送信
           if (webhookUrl && webhookUrl !== "ここにコピーしたURLを貼り付けます") {
             const response = await fetch(webhookUrl, {
               method: "POST",
@@ -492,14 +482,11 @@
             if (!response.ok) {
               throw new Error("Network response was not ok");
             }
-          } else {
-            console.log("Webhook URL未設定のため、コンソール出力のみ実行します:", payload);
           }
 
-          // ★ 自動でLINEに飛ばすのではなく、自アプリの「サンクスページ（Step 9）」に遷移させる！
+          // 送信成功でステップ9（最終完了画面）へ進む
           setStep(9);
           window.scrollTo(0, 0);
-
         } catch (e) {
           console.error("送信エラー:", e);
           setErrorMsg("送信に失敗しました。お手数ですが、時間をおいて再度お試しください。");
@@ -606,17 +593,19 @@
             </div>
           </div>
 
-          {/* ★ 縦並び (flex-col) 構成: 「この事例が好きなら...」を上に配置 */}
+          {/* ★ 「あなたのインテリア傾向を診断する」を中央寄せ縦2行に変更 */}
           <button 
             onClick={() => {
               setStep(4);
               window.scrollTo(0, 0);
             }}
-            className="w-full mb-5 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold py-4 px-6 rounded-full transition-all flex flex-col items-center justify-center gap-1.5 shadow-[0_4px_0_0_#c2410c] active:shadow-[0_0px_0_0_#c2410c] active:translate-y-1"
+            className="w-full mb-5 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold py-3.5 px-6 rounded-3xl transition-all flex flex-col items-center justify-center gap-1 shadow-[0_4px_0_0_#c2410c] active:shadow-[0_0px_0_0_#c2410c] active:translate-y-1"
           >
-            <span className="text-[13px] md:text-sm font-normal opacity-90">この事例が好きなら...</span>
-            <span className="text-[16px] md:text-lg flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span className="text-xs md:text-sm font-normal">この事例が好きなら...</span>
+            <span className="text-[16px] md:text-lg flex items-center justify-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/>
+              </svg>
               あなたのインテリア傾向を診断する
             </span>
           </button>
@@ -805,7 +794,7 @@
           { id: 'f8', name: "ペットスペース", desc: "ペットが快適に過ごせる専用の居場所や、散歩帰りに足を洗える洗い場など、ペットとの暮らしを豊かにする工夫です。", image: "./images/F_pet.jpg" },
           { id: 'f9', name: "ランドリールーム", desc: "「洗う・干す・畳む・アイロンがけ」が1カ所で完結する家事専用の部屋。家事動線が大幅に短縮されます。", image: "./images/F_laundry.jpg" },
           { id: 'f10', name: "インナーバルコニー", desc: "建物の内側に引っ込んだ、屋根のある半屋外のバルコニー。天候を気にせず洗濯物を干したりくつろいだりできます。", image: "./images/F_inner_balcony.jpg" },
-          { id: 'f11', name: "インナーガレージ", desc: "建物の一部に組み込まれた車やバイクのためのガレージ。雨に濡れずに車に乗り降りでき、防犯性も高まります。", image: "./images/F_inner_garage.jpg" },
+          { id: 'f11', name: "インナーガレージ", desc: "建物の一部に組み込まれた車やバイクのためのガレージ. 雨に濡れずに車に乗り降りでき、防犯性も高まります。", image: "./images/F_inner_garage.jpg" },
           { id: 'f12', name: "ホームライブラリー", desc: "壁一面の本棚や、読書に没頭できるスペース。本に囲まれた知的な時間を過ごせる空間です。", image: "./images/F_library.jpg" }
         ];
 
@@ -954,45 +943,55 @@
             </div>
 
             {/* オリジナルプランプレゼントを獲得するセクション */}
-            <div className="w-full relative mt-4 mb-6 bg-gradient-to-br from-emerald-50 to-[#f5eedf] rounded-3xl shadow-md border border-emerald-100 p-6 overflow-hidden flex flex-col justify-between min-h-[230px]">
+            <div className="w-full relative mt-4 mb-6 bg-gradient-to-br from-emerald-50 to-[#f5eedf] rounded-3xl shadow-md border border-emerald-100 p-6 overflow-hidden flex flex-col justify-between min-h-[250px]">
               
               {/* 背景の装飾サークル */}
               <div className="absolute -top-10 -left-10 w-32 h-32 bg-emerald-100/40 rounded-full blur-xl pointer-events-none"></div>
 
-              {/* 右上に配置するスタッフ画像 (添付画像 IMG_0183.png を配置) */}
-              <div className="absolute right-0 top-3 w-32 md:w-36 z-10 pointer-events-none">
-                <SafeImage 
+              {/* ★ アップロードされた案内女性の画像を枠内右上に絶対配置 */}
+              <div className="absolute right-0 top-3 w-[120px] md:w-[130px] h-[130px] md:h-[150px] pointer-events-none z-10 flex items-end justify-end">
+                <img 
                   src="./images/IMG_0183.png" 
                   alt="案内スタッフ" 
-                  className="w-full h-auto object-contain"
+                  className="max-h-full max-w-full object-contain object-bottom filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.1)]"
+                  onError={(e) => {
+                    // 万が一読み込めなかった場合のフォールバック
+                    e.target.style.display = 'none';
+                  }}
                 />
               </div>
 
-              {/* コンテンツエリア (女性画像が右側にあるため、テキストを左側のw-[65%]に収めてレイアウト) */}
-              <div className="relative z-10 w-[65%] text-left flex flex-col justify-center h-full">
-                <div className="bg-white text-emerald-800 text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-sm w-fit mb-3 border border-emerald-100">
+              {/* コンテンツエリア - 右上に画像が美しく配置されるため、重なりを避けるよう横幅を w-[72%] に最適調整 */}
+              <div className="relative z-20 w-[72%] text-left flex flex-col justify-center h-full">
+                <div className="bg-white text-emerald-800 text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-sm w-fit mb-2.5 border border-emerald-100">
                   診断メンバー限定特典
                 </div>
-                <h4 className="text-lg font-black text-gray-800 leading-snug mb-2">
-                  あなただけの<br />
-                  <span className="text-orange-500">オリジナルプラン</span> プレゼント！
+                {/* ★ スマホ画面幅（特に最小320px等）でも「オリジナルプランプレゼント！」が絶対に1列（改行なし）で綺麗に収まるよう、
+                     tracking-tighter（文字詰め）、whitespace-nowrap（改行防止）、および最適な縮小幅を調整しました */}
+                <h4 className="font-black text-gray-800 leading-tight mb-3">
+                  <span className="block text-[13px] min-[375px]:text-[14px] md:text-[16px] text-gray-600 font-bold">
+                    あなただけの
+                  </span>
+                  <span className="block text-[14.5px] min-[360px]:text-[16px] min-[375px]:text-[18px] min-[410px]:text-[20px] md:text-[23px] text-orange-500 font-black tracking-tighter whitespace-nowrap mt-1">
+                    オリジナルプランプレゼント！
+                  </span>
                 </h4>
-                <p className="text-[12px] text-gray-500 leading-relaxed mb-4">
+                <p className="text-[11px] md:text-[12px] text-gray-500 leading-relaxed mb-4">
                   間取り診断の結果を元にした、お客様専用の個別プランをお届けします。
                 </p>
               </div>
 
               {/* プレゼントボタン */}
-              <div className="w-full relative z-20 mt-auto">
+              <div className="relative z-30 mt-auto w-full">
                 <button
                   onClick={() => {
                     setStep(8);
                     window.scrollTo(0, 0);
                   }}
-                  className="w-full bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-extrabold py-4 px-3 min-[375px]:px-5 rounded-full shadow-[0_5px_0_0_#c2410c] active:shadow-[0_0px_0_0_#c2410c] active:translate-y-1 transition-all flex items-center justify-center gap-1.5 text-[12px] min-[360px]:text-[13px] min-[390px]:text-[15px] md:text-base whitespace-nowrap animate-pulse-soft"
+                  className="w-full bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-extrabold py-4 px-2 rounded-full shadow-[0_5px_0_0_#c2410c] active:shadow-[0_0px_0_0_#c2410c] active:translate-y-1 transition-all flex items-center justify-center gap-1 min-[375px]:gap-2 text-[11px] min-[360px]:text-[12px] min-[390px]:text-[14px] md:text-base whitespace-nowrap animate-pulse-soft"
                 >
                   <GiftIcon size={18} className="animate-bounce-gentle shrink-0" />
-                  <span>オリジナルプランプレゼントをもらう</span>
+                  オリジナルプランプレゼントをもらう
                 </button>
               </div>
             </div>
@@ -1078,14 +1077,17 @@
                 </label>
                 
                 <div className="grid grid-cols-3 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => { setReceiveMethod('chat'); setErrorMsg(""); }}
-                    className={`flex flex-col items-center gap-2 p-3 rounded-xl border-2 transition-all ${receiveMethod === 'chat' ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold shadow-sm' : 'border-gray-200 hover:border-emerald-200 text-gray-600 bg-[#fbfbfb]'}`}
+                  {/* ★ LINE公式アカウント(LIFF URL)へ直接遷移するリンクボタン */}
+                  <a
+                    href={LINE_ACCOUNT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={sendDiagnosticsBackground}
+                    className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 hover:border-[#06C755] hover:bg-[#06C755]/5 text-gray-600 hover:text-[#06C755] transition-all text-center"
                   >
                     <span className="text-2xl">💬</span>
-                    <span className="text-[12px] md:text-[13px]">チャットで送る</span>
-                  </button>
+                    <span className="text-[11px] md:text-[12px] leading-tight font-bold">チャットで相談する</span>
+                  </a>
 
                   <button
                     type="button"
@@ -1093,7 +1095,7 @@
                     className={`flex flex-col items-center gap-2 p-3 rounded-xl border-2 transition-all ${receiveMethod === 'mail' ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold shadow-sm' : 'border-gray-200 hover:border-emerald-200 text-gray-600 bg-[#fbfbfb]'}`}
                   >
                     <span className="text-2xl">✉️</span>
-                    <span className="text-[12px] md:text-[13px]">郵送する</span>
+                    <span className="text-[12px] md:text-[13px] font-bold">郵送する</span>
                   </button>
 
                   <button
@@ -1102,17 +1104,16 @@
                     className={`flex flex-col items-center gap-2 p-3 rounded-xl border-2 transition-all ${receiveMethod === 'visit' ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold shadow-sm' : 'border-gray-200 hover:border-emerald-200 text-gray-600 bg-[#fbfbfb]'}`}
                   >
                     <span className="text-2xl">🏠</span>
-                    <span className="text-[12px] md:text-[13px]">来店する</span>
+                    <span className="text-[12px] md:text-[13px] font-bold">来店する</span>
                   </button>
                 </div>
               </div>
 
-              {/* 3. 動的フォームセクション（お届け方法に合わせてフォームを切り替え） */}
-              {receiveMethod && (
+              {/* 3. 動的フォームセクション（郵送・来店時のみフォーム表示） */}
+              {(receiveMethod && receiveMethod !== 'line') && (
                 <div className="bg-[#fcfbf9] rounded-2xl p-4 md:p-5 border border-[#dfd6cb] animate-fade-in flex flex-col gap-4">
                   <h4 className="text-[14px] font-bold text-gray-800 border-b pb-2 mb-2 flex items-center gap-2">
                     <span>📝</span>
-                    {receiveMethod === 'chat' && 'チャットでのお受け取りに必要な情報'}
                     {receiveMethod === 'mail' && '資料のご郵送に必要な情報'}
                     {receiveMethod === 'visit' && 'ご来店相談の予約情報'}
                   </h4>
@@ -1130,23 +1131,6 @@
                       placeholder="例: 山田 太郎"
                     />
                   </div>
-
-                  {/* チャット受取用のフォーム */}
-                  {receiveMethod === 'chat' && (
-                    <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1">
-                        チャット送信用のご連絡先 <span className="text-red-500">*</span>
-                      </label>
-                      <input 
-                        type="text" 
-                        value={contact} 
-                        onChange={e => setContact(e.target.value)}
-                        className="w-full p-2.5 rounded-xl border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-[14px]" 
-                        placeholder="例: メールアドレス、またはお電話番号"
-                      />
-                      <p className="text-[11px] text-gray-500 mt-1">※追ってご案内またはプランをお送りします。</p>
-                    </div>
-                  )}
 
                   {/* 郵送用のフォーム */}
                   {receiveMethod === 'mail' && (
@@ -1203,14 +1187,16 @@
                           className="w-full p-2.5 rounded-xl border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 bg-white outline-none transition-all text-[14px]"
                         >
                           <option value="">店舗をお選びください</option>
-                          <option value="吉祥寺店">吉祥寺店</option>
-                          <option value="板橋店">板橋店</option>
-                          <option value="浦和店">浦和店</option>
-                          <option value="さいたま宮原店">さいたま宮原店</option>
-                          <option value="越谷店">越谷店</option>
-                          <option value="川越店">川越店</option>
-                          <option value="高崎店">高崎店</option>
-                          <option value="前橋店">前橋店</option>
+                          <optgroup label="SHOWROOM 各支店">
+                            <option value="吉祥寺">吉祥寺 (KICHIJOJI)</option>
+                            <option value="板橋">板橋 (ITABASHI)</option>
+                            <option value="浦和">浦和 (URAWA)</option>
+                            <option value="さいたま宮原">さいたま宮原 (SAITAMA MIYAHARA)</option>
+                            <option value="越谷">越谷 (KOSHIGAYA)</option>
+                            <option value="川越">川越 (KAWAGOE)</option>
+                            <option value="高崎">高崎 (TAKASAKI)</option>
+                            <option value="前橋">前橋 (MAEBASHI)</option>
+                          </optgroup>
                         </select>
                       </div>
                       <div>
@@ -1239,58 +1225,6 @@
                     </>
                   )}
 
-                  {/* 図面アップロード項目 (任意) */}
-                  <div className="mt-2 border-t border-gray-200 pt-3">
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 flex items-center justify-between">
-                      <span className="flex items-center gap-1">🗺️ 間取り図面の添付（任意）</span>
-                      <span className="text-gray-400 font-normal text-[10px]">写真・手書き・PDF等</span>
-                    </label>
-                    
-                    {!floorPlanFile ? (
-                      <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 hover:border-emerald-400 rounded-xl cursor-pointer hover:bg-emerald-50/20 transition-all bg-white relative overflow-hidden">
-                        <div className="flex flex-col items-center justify-center pt-4 pb-4 px-2 text-center">
-                          <span className="text-2xl mb-1.5">📁</span>
-                          <p className="text-xs font-bold text-gray-600">タップしてファイル・写真を選択</p>
-                          <p className="text-[10px] text-gray-400 mt-1">カメラで撮影・写真フォルダから選択も可能</p>
-                        </div>
-                        <input 
-                          type="file" 
-                          accept="image/*, application/pdf" 
-                          onChange={handleFileChange} 
-                          className="absolute inset-0 opacity-0 cursor-pointer" 
-                        />
-                      </label>
-                    ) : (
-                      <div className="relative border border-emerald-200 rounded-xl p-3 bg-emerald-50/20 flex items-center gap-3 animate-fade-in">
-                        {floorPlanPreview ? (
-                          <img 
-                            src={floorPlanPreview} 
-                            alt="図面プレビュー" 
-                            className="w-14 h-14 object-cover rounded-lg border border-gray-200 shadow-sm"
-                          />
-                        ) : (
-                          <div className="w-14 h-14 bg-gray-100 rounded-lg flex items-center justify-center text-xl border border-gray-200 shadow-sm">
-                            📄
-                          </div>
-                        )}
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs font-bold text-gray-800 truncate">{floorPlanFile.name}</p>
-                          <p className="text-[10px] text-gray-400">{(floorPlanFile.size / 1024 / 1024).toFixed(2)} MB</p>
-                        </div>
-                        <button 
-                          type="button" 
-                          onClick={handleRemoveFile}
-                          className="p-1.5 rounded-full bg-red-50 hover:bg-red-100 text-red-500 transition-colors"
-                          title="ファイルの削除"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
-                          </svg>
-                        </button>
-                      </div>
-                    )}
-                  </div>
-
                   {/* 自由記入欄 */}
                   <div>
                     <label className="block text-xs font-bold text-gray-700 mb-1">
@@ -1307,31 +1241,33 @@
               )}
             </div>
 
-            {/* 送信ボタン (クリックでMakeにデータを送り、サンクスページへ) */}
-            <button 
-              onClick={handleSendDirect}
-              disabled={isSubmitting || !receiveMethod || !housePlanType}
-              className={`w-full text-white font-bold py-4 px-6 rounded-full transition-all flex items-center justify-center gap-2 mb-4 ${
-                isSubmitting || !receiveMethod || !housePlanType
-                  ? 'bg-gray-400 cursor-not-allowed shadow-none' 
-                  : 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700 shadow-[0_4px_0_0_#c2410c] active:shadow-[0_0px_0_0_#c2410c] active:translate-y-1'
-              }`}
-            >
-              {isSubmitting ? (
-                <span className="flex items-center gap-2">
-                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  送信中...
-                </span>
-              ) : (
-                <span className="flex items-center gap-2 text-[16px]">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                  この内容でプラン作成を申し込む
-                </span>
-              )}
-            </button>
+            {/* 郵送・来店時用の送信ボタン */}
+            {receiveMethod !== 'line' && (
+              <button 
+                onClick={handleSendDirect}
+                disabled={isSubmitting || !receiveMethod || !housePlanType}
+                className={`w-full text-white font-bold py-4 px-6 rounded-full transition-all flex items-center justify-center gap-2 mb-4 ${
+                  isSubmitting || !receiveMethod || !housePlanType
+                    ? 'bg-gray-400 cursor-not-allowed shadow-none' 
+                    : 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700 shadow-[0_4px_0_0_#c2410c] active:shadow-[0_0px_0_0_#c2410c] active:translate-y-1'
+                }`}
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    送信中...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2 text-[16px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                    この内容でプラン作成を申し込む
+                  </span>
+                )}
+              </button>
+            )}
 
             <button 
               onClick={() => {
@@ -1347,65 +1283,23 @@
         );
       };
 
-      // STEP 9: 送信完了画面 (パーソナライズされたお礼 & LINE公式アカウント登録訴求を全面に出したサンクスページ)
+      // STEP 9: 送信完了画面
       const renderStep9 = () => {
+        const methodLabels = { mail: 'ご指定の住所へのご郵送', visit: 'ご来店相談' };
         return (
-          <div className="animate-slide-up flex flex-col items-center pt-6 pb-6 text-center">
-            
-            {/* 成功バッジ */}
-            <div className="bg-emerald-100 text-emerald-600 rounded-full w-20 h-20 flex items-center justify-center mb-5 shadow-[0_4px_10px_rgba(16,185,129,0.1)] border border-emerald-200">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 animate-bounce-gentle">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+          <div className="animate-slide-up flex flex-col items-center pt-10 pb-6 text-center">
+            <div className="bg-emerald-100 text-emerald-600 rounded-full w-20 h-20 flex items-center justify-center mb-6 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </div>
-            
-            {/* メインサンクスメッセージ */}
-            <h2 className="text-2xl font-black text-gray-800 mb-1 tracking-tight">お申し込み完了！</h2>
-            <p className="text-sm text-emerald-700 font-bold mb-4">プラン作成のリクエストを承りました</p>
-            
-            <div className="bg-white w-full rounded-3xl shadow-[0_4px_15px_rgba(0,0,0,0.05)] p-6 mb-6 border border-gray-100 text-left">
-              <p className="text-gray-700 leading-relaxed text-sm md:text-[15px] mb-4">
-                <span className="font-bold text-gray-800">{name}様</span>、この度はエコハウステイスト診断をご利用いただき誠にありがとうございます。
-              </p>
-              
-              <p className="text-gray-600 leading-relaxed text-xs md:text-sm mb-4">
-                ご希望の「<span className="font-bold text-emerald-700">{selectedTaste?.name || ""}テイスト</span>」に合わせたオリジナルプランの作成を開始いたしました。お客様だけの理想を詰め込んだ特別なプランを責任を持ってお届けいたします。
-              </p>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">お申し込み完了</h2>
+            <p className="text-gray-600 leading-relaxed mb-6 px-4 text-sm md:text-base">
+              お申し込み誠にありがとうございます！<br />
+              ご希望いただいた<strong>【{methodLabels[receiveMethod] || '窓口'}】</strong>にて、あなた好みの「{selectedTaste?.name || ""}」をベースとしたオリジナル特別プランをお届け・ご用意いたします。
+            </p>
 
-              {/* LINE友だち追加によるメリット説明 */}
-              <div className="bg-[#fcfbf9] rounded-2xl p-4 border border-[#dfd6cb] mt-4">
-                <h4 className="text-sm font-bold text-gray-800 mb-2.5 flex items-center gap-1.5">
-                  <span>💡</span> LINE公式アカウントをご登録ください
-                </h4>
-                <ul className="text-xs md:text-[13px] text-gray-600 flex flex-col gap-2 leading-relaxed">
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-emerald-600">✔</span>
-                    <span>プラン作成の進捗をチャットで手軽に確認・相談できます</span>
-                  </li>
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-emerald-600">✔</span>
-                    <span>登録者限定の『家づくりスタートガイド(PDF)』を即時プレゼント</span>
-                  </li>
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-emerald-600">✔</span>
-                    <span>実際の施工事例や予算シミュレーションなどの限定情報をお届け</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            {/* LINE友だち登録誘導ボタン */}
-            <div className="w-full mb-8">
-              <p className="text-xs text-gray-500 font-bold mb-2">＼ 1タップで友だち追加・特典プレゼント！ ／</p>
-              <a 
-                href="https://liff.line.me/1657509484-RgAyXZbq/landing?follow=%40015tjmpi&lp=w7yKtt&liff_id=1657509484-RgAyXZbq"
-                className="w-full bg-[#06C755] hover:bg-[#05b04b] text-white font-extrabold py-4 px-3 min-[360px]:px-6 rounded-full shadow-[0_5px_0_0_#04963e] active:shadow-none active:translate-y-[5px] transition-all flex items-center justify-center gap-2 text-[15px] min-[360px]:text-base md:text-lg whitespace-nowrap animate-pulse-soft"
-              >
-                <span className="text-xl">💬</span> LINE友だち登録をして進む
-              </a>
-            </div>
-
-            {/* はじめに戻るボタン */}
+            <p className="text-xs text-gray-500 mb-8 bg-emerald-50 border border-emerald-100 p-3.5 rounded-xl">
+              ※ご記入いただいた内容に沿って、担当アドバイザーより順次準備・ご連絡いたします。楽しみにお待ちください！
+            </p>
             <button 
               onClick={() => {
                 setStep(1);
@@ -1421,9 +1315,6 @@
                 setReceiveMethod("");
                 setLifestyleAnswers({ q1: "", q2: "", q3: "", q4: "", q5: "" });
                 setWantedFeatures([]);
-                setFloorPlanFile(null);
-                setFloorPlanPreview("");
-                setFloorPlanBase64("");
                 window.scrollTo(0, 0);
               }} 
               className="w-full bg-[#dfd6cb] hover:bg-[#d4cbbd] active:bg-[#cabbab] text-gray-800 font-bold py-3.5 px-6 rounded-full transition-colors shadow-sm"
@@ -1481,7 +1372,7 @@
         <div style="padding: 24px; font-family: sans-serif; color: #b91c1c;">
           <h1 style="font-size: 20px; font-weight: bold;">アプリの読み込みに失敗しました</h1>
           <p>Console に表示されているエラーを確認してください。</p>
-          <pre style="white-space: pre-wrap; background: #fee2e2; padding: 12px; border-radius: 8px;">\${error.message}</pre>
+          <pre style="white-space: pre-wrap; background: #fee2e2; padding: 12px; border-radius: 8px;">${error.message}</pre>
         </div>
       `;
     }
