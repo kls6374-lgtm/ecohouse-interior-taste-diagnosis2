@@ -382,10 +382,13 @@
             diagnosticTitle: selectedCase ? diagnosticResults[selectedCase.id].title.replace('\n', ' ') : "",
             lifestyle: formattedLifestyle,
             wantedFeatures: wantedFeatures.join("、"),
-            housePlanType: housePlanType || "未選択（直接LINE遷移）",
+            housePlanType: housePlanType,
             receiveMethod: "チャットで相談する（直接遷移）",
             name: "LINEユーザー（直接遷移）",
-            contact: "LINE直接遷移"
+            contact: "LINE直接遷移",
+            // ★変更: チャットの時は見出しごと消すため、空文字にする
+            contactDetails: "",
+            message: ""
           };
 
           if (webhookUrl && webhookUrl !== "ここにコピーしたURLを貼り付けます") {
@@ -451,13 +454,16 @@
           const formattedLifestyle = `【収納：${lifestyleAnswers.q1} / 洗濯：${lifestyleAnswers.q2} / 買い物：${lifestyleAnswers.q3} / キッチン：${lifestyleAnswers.q4} / 洗面脱衣：${lifestyleAnswers.q5}】`;
           const methodLabel = { mail: "郵送する", visit: "来店する" }[receiveMethod];
 
-          // ★追加: Slack通知用に、受取方法に応じた連絡先情報テキストを自動で組み立てる
-          let contactDetailsText = `・連絡先 / 電話番号： ${contact}`;
+          // ★変更: Slack通知用に、「見出し」も含めた連絡先情報を組み立てる
+          let contactDetailsText = `\n■連絡先\n・連絡先 / 電話番号： ${contact}`;
           if (receiveMethod === 'mail') {
             contactDetailsText += `\n・郵便番号： ${postalCode}\n・住所： ${address}`;
           } else if (receiveMethod === 'visit') {
             contactDetailsText += `\n・希望店舗： ${visitStore}\n・希望日時： ${visitDateTime}`;
           }
+
+          // ★追加: 「ご質問・ご要望」も見出しを含めて組み立てる（入力がない場合は空欄にする）
+          let messageText = message.trim() ? `\n■ご質問・ご要望\n${message}` : "";
 
           // Webhookへ送るデータ構造
           const payload = {
@@ -477,9 +483,9 @@
             address: address,
             visitStore: visitStore,
             visitDateTime: visitDateTime,
-            message: message,
-
-            // ★追加: 組み立てた詳細情報をMakeに送る
+            
+            // ★変更: 見出し付きのメッセージと連絡先をMakeに送る
+            message: messageText,
             contactDetails: contactDetailsText
           };
 
@@ -1091,11 +1097,22 @@
                 <div className="grid grid-cols-3 gap-1.5 min-[375px]:gap-2">
                   {/* ★ LINE公式アカウント(LIFF URL)へ直接遷移するリンクボタン */}
                   <a
-                    href={LINE_ACCOUNT_URL}
-                    target="_blank"
+                    href={housePlanType ? LINE_ACCOUNT_URL : undefined}
+                    target={housePlanType ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    onClick={sendDiagnosticsBackground}
-                    className="flex flex-col items-center justify-center gap-2 p-2 md:p-3 rounded-xl border-2 border-gray-200 hover:border-[#06C755] hover:bg-[#06C755]/5 text-gray-600 hover:text-[#06C755] transition-all text-center"
+                    onClick={(e) => {
+                      if (!housePlanType) {
+                        e.preventDefault(); // リンクの遷移をストップ
+                        setErrorMsg("「チャットで相談する」に進む前に、上部の「計画されているお住まい」を選択してください。");
+                        return;
+                      }
+                      sendDiagnosticsBackground();
+                    }}
+                    className={`flex flex-col items-center justify-center gap-2 p-2 md:p-3 rounded-xl border-2 transition-all text-center ${
+                      housePlanType 
+                        ? 'border-gray-200 hover:border-[#06C755] hover:bg-[#06C755]/5 text-gray-600 hover:text-[#06C755] cursor-pointer' 
+                        : 'border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed opacity-60'
+                    }`}
                   >
                     <span className="text-2xl">💬</span>
                     <span className="text-[10px] min-[360px]:text-[11px] md:text-[12px] leading-tight font-bold whitespace-nowrap tracking-tighter">チャットで相談する</span>
