@@ -452,11 +452,11 @@
           const methodLabel = { mail: "郵送する", visit: "来店する" }[receiveMethod];
 
           // ★追加: Slack通知用に、受取方法に応じた連絡先情報テキストを自動で組み立てる
-          let contactDetailsText = `・連絡先 / 電話番号: ${contact}`;
+          let contactDetailsText = `・連絡先 / 電話番号： ${contact}`;
           if (receiveMethod === 'mail') {
-            contactDetailsText += `\n・郵便番号: ${postalCode}\n・住所: ${address}`;
+            contactDetailsText += `\n・郵便番号： ${postalCode}\n・住所： ${address}`;
           } else if (receiveMethod === 'visit') {
-            contactDetailsText += `\n・希望店舗: ${visitStore}\n・希望日時: ${visitDateTime}`;
+            contactDetailsText += `\n・希望店舗： ${visitStore}\n・希望日時： ${visitDateTime}`;
           }
 
           // Webhookへ送るデータ構造
